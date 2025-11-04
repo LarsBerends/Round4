@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ondernemers via Sport – V3 (HTML/CSS/JS)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script async src="https://tally.so/widgets/embed.js"></script>
+</head>
+<body>
+  <!-- SVG sprite (iconen) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden">
+    <symbol id="icon-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+    <symbol id="icon-calendar-check" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="m9 16 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-beer" viewBox="0 0 24 24"><path d="M17 11h1a3 3 0 0 1 0 6h-1M9 12v6a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 11V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5M13 5h2a2 2 0 0 1 2 2v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 12a8 8 0 1 1-3.3-6.5L21 6l-1.2 3.2A8 8 0 0 1 21 12z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M3 7h18v10H3z" fill="none" stroke="currentColor" stroke-width="1.75"/><circle cx="17" cy="12" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 20 20"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.07 3.29a1 1 0 0 0 .95.69h3.46c.97 0 1.37 1.24.59 1.81l-2.8 2.04a1 1 0 0 0-.36 1.12l1.07 3.29c.3.92-.75 1.69-1.54 1.12l-2.8-2.04a1 1 0 0 0-1.18 0l-2.8 2.04c-.78.57-1.84-.2-1.54-1.12l1.07-3.29a1 1 0 0 0-.36-1.12L2.88 8.72c-.78-.57-.38-1.81.59-1.81h3.46a1 1 0 0 0 .95-.69z" fill="currentColor"/></symbol>
+  </svg>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <img src="images/Logo-Round4.svg" alt="Round4" style="height:90px;">
+      </div>
+      <nav class="nav">
+        <a href="#how">Hoe het werkt</a>
+        <a href="#benefits">Voordelen</a>
+        <a href="#activities">Activiteiten</a>
+        <a href="#pricing">Prijs</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#form" class="btn btn-primary" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Join Round4</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container grid-2">
+      <div>
+        <h1 class="h1">Ontmoet elke maand <span class="highlight">3 ondernemers</span> via een activiteit in jouw stad</h1>
+        <p class="muted" style="margin-top:10px">Round4 koppelt elke maand vier lokale ondernemers aan elkaar voor een sportieve activiteit. Geen formele borrels, maar échte ontmoetingen. In beweging, met inhoud én plezier.</p>
+        <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:8px">
+          <a href="#" class="btn btn-primary" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Inschrijven op de wachtlijst</a>
+          <a href="#how" class="btn btn-outline">Hoe werkt het</a>
+        </div>
+        <p style="margin-top:16px; font-size:14px; color:var(--text)">Start binnenkort in Utrecht, <a href="#" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000" style="color:var(--primary);">schrijf je in voor de wachtlijst</a>.</p>
+        
+      </div>
+
+      <!-- Mini-intake verwijderd: Tally popup opent via knoppen -->
+    </div>
+  </section>
+
+  <!-- Sports marquee -->
+  <div class="sports-marquee" aria-hidden="true">
+    <div class="sports-track">
+      <div class="sports-seq">
+        <span class="sport">Bowlen</span>
+        <span class="sport">Padel</span>
+        <span class="sport">Poolen</span>
+        <span class="sport">Darten</span>
+        <span class="sport">Tennis</span>
+        <span class="sport">Mini‑golf</span>
+        <span class="sport">City walk</span>
+        <span class="sport">Jeu de boules</span>
+        <span class="sport">Yoga</span>
+        <span class="sport">Boulderen</span>
+        <span class="sport">Pitch & putt</span>
+        <span class="sport">Bordspellen</span>
+        <span class="sport">Karting</span>
+        <span class="sport">Beachvolley</span>
+        <span class="sport">Suppen</span>
+        <span class="sport">Boksen</span>
+        <span class="sport">Bootcamp</span>
+        <span class="sport">Trailrun</span>
+        <span class="sport">Tafeltennis</span>
+        <span class="sport">Shuffleboard</span>
+        <span class="sport">Sjoelen</span>
+        <span class="sport">Zaalvoetbal</span>
+      </div>
+      <div class="sports-seq" aria-hidden="true">
+        <span class="sport">Bowlen</span>
+        <span class="sport">Padel</span>
+        <span class="sport">Poolen</span>
+        <span class="sport">Darten</span>
+        <span class="sport">Tennis</span>
+        <span class="sport">Mini‑golf</span>
+        <span class="sport">City walk</span>
+        <span class="sport">Jeu de boules</span>
+        <span class="sport">Yoga</span>
+        <span class="sport">Boulderen</span>
+        <span class="sport">Pitch & putt</span>
+        <span class="sport">Bordspellen</span>
+        <span class="sport">Karting</span>
+        <span class="sport">Beachvolley</span>
+        <span class="sport">Suppen</span>
+        <span class="sport">Boksen</span>
+        <span class="sport">Bootcamp</span>
+        <span class="sport">Trailrun</span>
+        <span class="sport">Tafeltennis</span>
+        <span class="sport">Shuffleboard</span>
+        <span class="sport">Sjoelen</span>
+        <span class="sport">Zaalvoetbal</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <section id="how" class="section border">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Hoe het werkt</span>
+        <h2 class="h2">Iedere maand. <span class="highlight">vier ondernemers.</span> één activiteit.</h2>
+      </div>
+      <div class="cards cols-4">
+        <div class="card">
+          <h3 style="font-size:20px; font-weight:600">1. Automatische match</h3>
+          <p class="muted" style="font-size:14px; margin-top:6px">We koppelen je elke maand aan drie ondernemers uit jouw omgeving. Lokaal en laagdrempelig.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:20px; font-weight:600">2. Plan jullie activiteit</h3>
+          <p class="muted" style="font-size:14px; margin-top:6px">Jullie prikken samen een sportieve activiteit. Wandelen, boksen, padel, het maakt niet uit.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:20px; font-weight:600">3. Deel ervaringen</h3>
+          <p class="muted" style="font-size:14px; margin-top:6px">Na het sporten: koffie, biertje, pizza en échte gesprekken. Ondernemers die elkaar vooruit helpen.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:20px; font-weight:600">4. Volgende ronde</h3>
+          <p class="muted" style="font-size:14px; margin-top:6px">Aan het eind van de maand verdwijnt de groepschat en begint het weer van voor af aan.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:16px">
+        <p class="sub" style="margin-bottom:16px">Samen actief, samen groeien — dat is Round4</p>
+        <a href="#" class="btn btn-primary" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Join Round4</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" class="section soft">
+    <div class="container">
+      <div class="benefits-content">
+        <div class="benefits-image">
+          <img src="images/Padel.webp" alt="Padel spel" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+        <div class="benefits-text">
+          <span class="kicker">Waarom dit werkt</span>
+          <h2 class="h2">Sport <span class="highlight">breekt</span> het ijs en de bullshit.</h2>
+          <ul style="margin-top:16px; padding-left:0; list-style:none;">
+            <li style="margin-bottom:12px; color:var(--text);"><i class="fa fa-check" aria-hidden="true"></i> In kleine groepen ontstaat vanzelf diepgang.</li>
+            <li style="margin-bottom:12px; color:var(--text);"><i class="fa fa-check" aria-hidden="true"></i> Geen pitch of oppervlakkige praatjes.</li>
+            <li style="margin-bottom:12px; color:var(--text);"><i class="fa fa-check" aria-hidden="true"></i> Je hoeft je niet te bewijzen. Je hoeft niks te verkopen.</li>
+            <li style="color:var(--text);"><i class="fa fa-check" aria-hidden="true"></i> Voor ondernemers die groeien door te delen.</li>
+          </ul>
+          <p style="margin-top:12px; color:var(--text);">Round4 is voor ondernemers die niet bang zijn voor een beetje zweet en een goed gesprek.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voor Wie -->
+  <section id="voor-wie" class="section border">
+    <div class="container">
+      <div class="benefits-content">
+        <div class="benefits-text">
+          <span class="kicker">Voor wie is Round4</span>
+          <h2 class="h2" style="color:var(--text);">Voor ondernemers met energie. Niet met visitekaartjes.</h2>
+          <p style="margin-top:16px; color:var(--text); font-size:16px;">Round4 is er voor mensen die ondernemen op hun eigen manier. Founders, freelancers, creatieven, bouwers — tussen de 25 en 40 jaar — die midden in het leven staan en scherp willen blijven.</p>
+          <p style="margin-top:12px; color:var(--text); font-size:16px;">Niet om te netwerken voor de vorm, maar om elkaar echt te leren kennen. Je hoeft bij Round4 niks te pitchen. Je hoeft je niet beter voor te doen dan je bent. Je komt gewoon zoals je bent. Met je ideeën, twijfels, plannen of successen.</p>
+          <h3 style="margin-top:24px; color:var(--text); font-size:18px; font-weight:600;">Wat je wél nodig hebt?</h3>
+          <p style="margin-top:12px; color:var(--text); font-size:16px;">Nieuwsgierigheid. Beweging. En de bereidheid om even offline te gaan, zodat je ruimte maakt voor échte gesprekken.</p>
+        </div>
+        <div class="benefits-image">
+          <img src="images/Padel.webp" alt="Ondernemers" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section id="activities" class="section border" style="background:var(--bg-alt)">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Activiteiten</span>
+        <h2 class="h2">Kies wat bij jullie past</h2>
+        <p class="sub">Inspiratie voor plannen tijdens jullie eerste meet‑up</p>
+      </div>
+      <div class="pills">
+        <button class="pill active" data-tab="licht">Licht & toegankelijk</button>
+        <button class="pill" data-tab="actief">Actief & energiek</button>
+        <button class="pill" data-tab="sociaal">Sociaal + fun</button>
+      </div>
+      <div id="activitiesGrid" class="cards cols-3" style="margin-top:16px"></div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <!--
+  <section class="section soft">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Ervaringen</span>
+        <h2 class="h2">Wat ondernemers zeggen</h2>
+        <p class="sub">Korte quotes, echte resultaten</p>
+      </div>
+      <div class="cards cols-3" style="margin-top:24px">
+        <blockquote class="card" style="background:rgba(255,255,255,.9); backdrop-filter: blur(1px)">
+          <p style="font-size:14px">"Elke maand nieuwe energie – en twee warme leads uit mijn eerste drie bijeenkomsten."</p>
+          <footer style="margin-top:8px; font-size:12px; color:var(--muted)">— Samira, marketingstudio</footer>
+        </blockquote>
+        <blockquote class="card" style="background:rgba(255,255,255,.9); backdrop-filter: blur(1px)">
+          <p style="font-size:14px">"De small group werkt: je komt echt tot de kern en je bouwt vertrouwen op."</p>
+          <footer style="margin-top:8px; font-size:12px; color:var(--muted)">— Jeroen, SaaS-founder</footer>
+        </blockquote>
+        <blockquote class="card" style="background:rgba(255,255,255,.9); backdrop-filter: blur(1px)">
+          <p style="font-size:14px">"Sport maakt het luchtig. De borrel erna is perfect om door te pakken."</p>
+          <footer style="margin-top:8px; font-size:12px; color:var(--muted)">— Mila, e-commerce</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- Pricing -->
+  <section id="pricing" class="section border" style="background:var(--bg);">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Prijs</span>
+        <h2 class="h2">Simpel en transparant</h2>
+        <p class="sub">Maandelijks lidmaatschap – opzeggen kan altijd</p>
+      </div>
+      <div class="container" style="max-width:640px">
+        <div class="card" style="margin-top:24px; background:var(--soft)">
+          <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px">
+            <div>
+              <div class="muted" style="font-size:14px">Lidmaatschap</div>
+              <div style="margin-top:6px; font-size:32px; font-weight:700"><span style="color:#1c1d20;">€9,95</span> <span style="font-size:16px; font-weight:400; color:var(--muted)">/ maand</span></div>
+            </div>
+            <span class="badge">Maandelijks opzegbaar</span>
+          </div>
+          <ul style="margin:12px 0 0; padding-left:18px; color:#1c1d20; font-size:14px">
+            <li>Elke maand match met 3 ondernemers</li>
+            <li>Activiteit‑inspiratie en chatgroep</li>
+            <li>Wees onderdeel van een nieuwe netwerkrevolutie</li>
+          </ul>
+          <div style="margin-top:16px">
+            <a href="#" class="btn btn-primary" style="width:100%" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Join Round4</a>
+          </div>
+          <p class="muted" style="margin-top:8px; font-size:12px">Kosten voor activiteiten zijn voor eigen rekening en keuze.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testfase -->
+  <section id="testfase" class="section border" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="benefits-content">
+        <div class="benefits-image">
+          <img src="images/Padel.webp" alt="Utrecht" style="width:100%; height:auto; border-radius:12px;">
+        </div>
+        <div class="benefits-text">
+          <span class="kicker">Testfase</span>
+          <h2 class="h2" style="color:var(--text);">Round4 begint in Utrecht</h2>
+          <p style="margin-top:16px; color:var(--text); font-size:16px;">We starten met een pilot in Utrecht. De eerste 50 ondernemers worden ingedeeld in groepjes van vier. Als je erbij bent, bouw je vanaf dag één mee. Geen afwachtende houding. Geen kijkers. Alleen doeners.</p>
+          <p style="margin-top:16px; color:var(--text); font-size:18px; font-weight:600;">Ben jij er klaar voor?</p>
+          <div style="margin-top:20px">
+            <a href="#" class="btn btn-primary" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Join Round4</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="section soft">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Roadmap</span>
+        <h2 class="h2">Meer waarde naarmate de community groeit</h2>
+        <p class="sub">Specifieke matching zodra jouw stad 250+ leden heeft</p>
+      </div>
+      <div class="card progress-wrap" style="background:rgba(255,255,255,.9); backdrop-filter: blur(1px)">
+        <div class="progress-scale"><span>0</span><span>125</span><span>250+</span></div>
+        <div class="progress"><div></div></div>
+        <p class="muted" style="font-size:14px; margin-top:10px">Fase 1: lokaal matchen op beschikbaarheid & sport. Fase 2: specifieker matchen op branche, omzetniveau en groeifase.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section border">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">FAQ</span>
+        <h2 class="h2">Veelgestelde vragen</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-btn">Hoe plannen we de activiteit? <span style="border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px">+</span></button>
+          <div class="faq-body">Jullie kiezen zelf plek en tijd. We geven inspiratielijstjes en handige checklists.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Wat als ik verhinderd ben? <span style="border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px">+</span></button>
+          <div class="faq-body">Je kunt ruilen of een maand overslaan – je lidmaatschap blijft doorlopen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Kan ik minder vaak meedoen? <span style="border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px">+</span></button>
+          <div class="faq-body">Ja, maandelijks, om de maand of per kwartaal. Jij bepaalt het ritme.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Wie betaalt de activiteit? <span style="border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px">+</span></button>
+          <div class="faq-body">Jullie zelf, passend bij voorkeur en budget. Gratis opties kan ook (wandeling, city walk).</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Hoe zit het met privacy? <span style="border:1px solid var(--border); border-radius:999px; padding:2px 8px; font-size:12px">+</span></button>
+          <div class="faq-body">We gebruiken je gegevens alleen voor matching. We delen niets met derden.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container foot-row">
+      <div class="brand">
+        <div class="logo" style="width:32px; height:32px; border-radius:10px">L</div>
+        <span style="color:var(--muted)">© <span id="year"></span> – Community voor ondernemers via sport</span>
+      </div>
+      <div class="foot-links">
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Voorwaarden</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA (mobiel) -->
+  <div id="sticky" class="stickybar">
+    <div class="sticky-inner">
+      <button id="stickyPlan" class="btn btn-primary" style="flex:1" data-tally-open="w452ob" data-tally-layout="modal" data-tally-auto-close="15000">Join Round4</button>
+    </div>
+  </div>
+
+  <!-- Modal verwijderd: Tally popup gebruikt -->
+
+  <script src="script.js"></script>
+</body>
+</html>
