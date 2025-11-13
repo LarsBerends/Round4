@@ -80,16 +80,6 @@ async function setLanguage(lang) {
   // Apply translations
   translate();
   
-  // Translate pill buttons
-  $$('.pill[data-tab]').forEach(btn => {
-    const tab = btn.dataset.tab;
-    const key = `activities.tabs.${tab}`;
-    const value = getNestedValue(translations, key);
-    if (value !== undefined) {
-      btn.textContent = value;
-    }
-  });
-  
   // Update language switcher active state
   updateLanguageSwitcher();
   

@@ -83,58 +83,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Form: geen native submit/validatie nodig; Tally popup handlet de flow
 
-  // Activities (support meerdere scopes)
-  function initActivities() {
-    const activities = getActivities();
-    if (!activities.actief) {
-      // Translations not loaded yet, wait
-      return false;
-    }
-    
-    $$('.activities-scope').forEach(scope => {
-      // Default render
-      const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
-      const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
-      renderActivities(defaultKey, scope);
+  // Activities (support meerdere scopes) - like original but with translations
+  $$('.activities-scope').forEach(scope => {
+    // Bind events per scope (like original)
+    $$('.pill', scope).forEach(btn => {
+      btn.addEventListener('click', function() {
+        $$('.pill', scope).forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const activities = getActivities();
+        if (activities[this.dataset.tab]) {
+          renderActivities(this.dataset.tab, scope);
+        }
+      });
     });
-    return true;
-  }
-  
-  // Bind pill events (only once, using event delegation)
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('pill') && e.target.dataset.tab) {
-      const scope = e.target.closest('.activities-scope');
-      if (!scope) return;
-      $$('.pill', scope).forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      renderActivities(e.target.dataset.tab, scope);
-    }
-  });
-  
-  // Initialize activities after translations are loaded
-  window.addEventListener('languageChanged', () => {
-    initActivities();
-  });
-  
-  // Try to initialize - wait for translations
-  function tryInitActivities() {
-    if (!initActivities()) {
-      // If translations not ready, try again
-      setTimeout(tryInitActivities, 200);
-    }
-  }
-  
-  // Start trying after a short delay
-  setTimeout(tryInitActivities, 300);
-
-  // FAQ - use event delegation to handle translated content
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('faq-btn') || e.target.closest('.faq-btn')) {
-      const btn = e.target.classList.contains('faq-btn') ? e.target : e.target.closest('.faq-btn');
-      const item = btn.closest('.faq-item');
-      if (item) {
-        item.classList.toggle('open');
+    
+    // Initial render - wait for translations
+    function renderInitial() {
+      const activities = getActivities();
+      if (activities.actief) {
+        const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
+        const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
+        renderActivities(defaultKey, scope);
+      } else {
+        setTimeout(renderInitial, 200);
       }
+    }
+    setTimeout(renderInitial, 100);
+  });
+  
+  // Re-render activities when language changes
+  window.addEventListener('languageChanged', () => {
+    $$('.activities-scope').forEach(scope => {
+      const activeBtn = $('.pill.active', scope) || $('.pill', scope);
+      const activeKey = activeBtn ? activeBtn.dataset.tab : 'actief';
+      const activities = getActivities();
+      if (activities[activeKey]) {
+        renderActivities(activeKey, scope);
+      }
+    });
+  });
+
+  // FAQ - bind directly to buttons (works with translations)
+  $$('.faq-item').forEach(item => {
+    const btn = $('.faq-btn', item);
+    if (btn) {
+      btn.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
     }
   });
 
