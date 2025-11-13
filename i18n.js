@@ -76,10 +76,8 @@ async function setLanguage(lang) {
     document.title = translations.meta.title;
   }
 
-  // Load translations if not already loaded
-  if (!translations.meta) {
-    await loadTranslations(lang);
-  }
+  // Always load translations for the new language (in case switching from nl to en or vice versa)
+  await loadTranslations(lang);
 
   // Apply translations
   translate();

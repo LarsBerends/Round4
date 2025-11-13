@@ -46,7 +46,7 @@ body {
 .header-row .brand { flex-shrink:0; }
 .header-row .nav { flex:1; }
 .header-row .lang-switcher { flex-shrink:0; }
-.header-row .mobile-menu-toggle { flex-shrink:0; }
+.header-row .mobile-menu-toggle { flex-shrink:0; padding-right:12px; }
 .header-row .header-cta { flex-shrink:0; }
 .header-cta { display:none; gap:8px; }
 .mobile-menu-toggle { display:none; }
@@ -60,6 +60,7 @@ body {
 .mobile-nav.open { display:block !important; }
 .mobile-nav a { text-decoration: none; color: var(--text); padding:8px 0; display:block; }
 .mobile-nav a:hover { color: var(--primary); }
+.mobile-nav .btn-primary { color: #0f172a !important; text-align: center; }
 .lang-switcher { display:flex; gap:8px; align-items:center; }
 .lang-switcher-btn { background:none; border:none; color:var(--text); cursor:pointer; padding:4px 8px; font-size:14px; opacity:0.7; transition:opacity 0.2s, font-weight 0.2s; }
 .lang-switcher-btn:hover { opacity:1; }
@@ -212,7 +213,7 @@ select, input, button { font: inherit; }
 
 /* ======= Sticky CTA (mobiel) ======= */
 .stickybar { position: fixed; left:0; right:0; bottom:12px; z-index:40; padding:0 12px; }
-.sticky-inner { max-width: 420px; margin: 0 auto; border:1px solid var(--border); background:#fff; border-radius:16px; padding:8px; box-shadow: 0 8px 24px rgba(2,6,23,.15); display:flex; gap:8px; }
+.sticky-inner { max-width: 420px; margin: 0 auto; border:1px solid var(--border); background:transparent; border-radius:16px; padding:8px; box-shadow: 0 8px 24px rgba(2,6,23,.15); display:flex; gap:8px; }
 
 /* ======= Modal ======= */
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); display:none; align-items:center; justify-content:center; padding:12px; z-index: 50; }
