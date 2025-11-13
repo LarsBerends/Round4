@@ -7,8 +7,8 @@ if (typeof window.$ === 'undefined') {
   window.$ = (sel, root = document) => root.querySelector(sel);
   window.$$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 }
-const $ = window.$;
-const $$ = window.$$;
+// Use window properties directly (no const to avoid redeclaration errors)
+// In this file, we'll use window.$ and window.$$ directly
 
 // Load translations from JSON file
 async function loadTranslations(lang) {
@@ -94,7 +94,7 @@ async function setLanguage(lang) {
 // Translate all elements with data-i18n attributes
 function translate() {
   // Translate elements with data-i18n
-  $$('[data-i18n]').forEach(el => {
+  window.$$('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const value = getNestedValue(translations, key);
     if (value !== undefined) {
@@ -109,7 +109,7 @@ function translate() {
   });
 
   // Translate elements with data-i18n-html (for HTML content)
-  $$('[data-i18n-html]').forEach(el => {
+  window.$$('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     const value = getNestedValue(translations, key);
     if (value !== undefined) {
@@ -118,7 +118,7 @@ function translate() {
   });
 
   // Translate placeholder attributes
-  $$('[data-i18n-placeholder]').forEach(el => {
+  window.$$('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
     const value = getNestedValue(translations, key);
     if (value !== undefined) {
@@ -127,7 +127,7 @@ function translate() {
   });
 
   // Translate aria-label attributes
-  $$('[data-i18n-aria-label]').forEach(el => {
+  window.$$('[data-i18n-aria-label]').forEach(el => {
     const key = el.getAttribute('data-i18n-aria-label');
     const value = getNestedValue(translations, key);
     if (value !== undefined) {
@@ -136,7 +136,7 @@ function translate() {
   });
 
   // Translate alt attributes
-  $$('[data-i18n-alt]').forEach(el => {
+  window.$$('[data-i18n-alt]').forEach(el => {
     const key = el.getAttribute('data-i18n-alt');
     const value = getNestedValue(translations, key);
     if (value !== undefined) {
@@ -154,7 +154,7 @@ function getNestedValue(obj, path) {
 
 // Update language switcher active state
 function updateLanguageSwitcher() {
-  $$('.lang-switcher-btn').forEach(btn => {
+  window.$$('.lang-switcher-btn').forEach(btn => {
     if (btn.dataset.lang === currentLang) {
       btn.classList.add('active');
       btn.style.opacity = '1';

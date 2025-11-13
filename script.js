@@ -22,13 +22,15 @@ const THEMES = {
 };
 
 // ===== Helpers =====
-// Reuse helper functions if already defined (from i18n.js), otherwise define them
+// Reuse helper functions from i18n.js (they're already defined on window)
+// If i18n.js hasn't loaded yet, define them here as fallback
 if (typeof window.$ === 'undefined') {
   window.$ = (sel, root=document) => root.querySelector(sel);
   window.$$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 }
-const $ = window.$;
-const $$ = window.$$;
+// Create local aliases that reference window functions (no const redeclaration)
+const $ = (sel, root) => window.$(sel, root || document);
+const $$ = (sel, root) => window.$$(sel, root || document);
 const setVars = (theme) => {
   const t = THEMES[theme] || THEMES.sportief;
   const r = document.documentElement;
@@ -47,17 +49,26 @@ function populateSelect(el, arr){
 
 // ===== Activities render =====
 function renderActivities(key, scope){
+  console.log('renderActivities called with key:', key);
   const activities = getActivities();
   if (!activities || !activities[key]) {
-    console.warn('Activities data not found for key:', key);
+    console.warn('Activities data not found for key:', key, 'Available keys:', activities ? Object.keys(activities) : 'none');
     return;
   }
   const data = activities[key];
-  if(!data || !scope) return;
+  if(!data || !scope) {
+    console.warn('Missing data or scope:', { data: !!data, scope: !!scope });
+    return;
+  }
   const descEl = $('.activitiesDesc', scope);
   const listEl = $('.activitiesList', scope);
   if(!descEl || !listEl) {
-    console.warn('Activities elements not found:', { descEl, listEl, scope });
+    console.warn('Activities elements not found:', { 
+      descEl: !!descEl, 
+      listEl: !!listEl, 
+      scope: scope,
+      scopeHTML: scope ? scope.innerHTML.substring(0, 100) : 'no scope'
+    });
     return;
   }
   const contentWrap = scope.closest('.benefits-content');
@@ -66,16 +77,18 @@ function renderActivities(key, scope){
   // Set description
   if (data.desc) {
     descEl.textContent = data.desc;
+    console.log('Description set:', data.desc);
   }
   
   // Clear and rebuild list
   listEl.innerHTML = '';
   if (data.items && data.items.length > 0) {
+    console.log('Rendering', data.items.length, 'items');
     const columns = [];
     for(let i = 0; i < data.items.length; i += 7){
       columns.push(data.items.slice(i, i + 7));
     }
-    columns.forEach(colItems => {
+    columns.forEach((colItems, colIndex) => {
       const col = document.createElement('ul');
       colItems.forEach(item => {
         const li = document.createElement('li');
@@ -83,13 +96,17 @@ function renderActivities(key, scope){
         col.appendChild(li);
       });
       listEl.appendChild(col);
+      console.log('Added column', colIndex + 1, 'with', colItems.length, 'items');
     });
+  } else {
+    console.warn('No items to render for key:', key);
   }
   
   // Update image
   if(imageEl && data.image){
     imageEl.src = data.image;
     imageEl.alt = data.imageAlt || data.desc;
+    console.log('Image updated:', data.image);
   }
 }
 
@@ -112,16 +129,24 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Form: geen native submit/validatie nodig; Tally popup handlet de flow
 
-  // Activities (support meerdere scopes) - like original but with translations
+  // Activities initialization
   function initActivities() {
     const activities = getActivities();
     if (!activities || !activities.actief) {
+      console.log('Activities not ready yet, waiting...');
       return false; // Translations not loaded yet, wait
     }
     
-    $$('.activities-scope').forEach(scope => {
+    const scopes = $$('.activities-scope');
+    if (scopes.length === 0) {
+      console.warn('No .activities-scope elements found');
+      return false;
+    }
+    
+    scopes.forEach(scope => {
       const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
       const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
+      console.log('Initializing activities with key:', defaultKey);
       renderActivities(defaultKey, scope);
     });
     return true;
@@ -142,15 +167,20 @@ window.addEventListener('DOMContentLoaded', () => {
   function tryInitActivities() {
     if (!initActivities()) {
       setTimeout(tryInitActivities, 200);
+    } else {
+      console.log('Activities initialized successfully');
     }
   }
-  setTimeout(tryInitActivities, 300);
+  
+  // Start initialization after a short delay to ensure DOM and translations are ready
+  setTimeout(tryInitActivities, 500);
   
   // Re-render activities when language changes
   window.addEventListener('languageChanged', () => {
+    console.log('Language changed, re-initializing activities...');
     setTimeout(() => {
       initActivities();
-    }, 100);
+    }, 200);
   });
 
   // FAQ - bind directly to buttons (works with translations)
