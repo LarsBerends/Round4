@@ -22,8 +22,13 @@ const THEMES = {
 };
 
 // ===== Helpers =====
-const $ = (sel, root=document) => root.querySelector(sel);
-const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+// Reuse helper functions if already defined (from i18n.js), otherwise define them
+if (typeof window.$ === 'undefined') {
+  window.$ = (sel, root=document) => root.querySelector(sel);
+  window.$$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+}
+const $ = window.$;
+const $$ = window.$$;
 const setVars = (theme) => {
   const t = THEMES[theme] || THEMES.sportief;
   const r = document.documentElement;

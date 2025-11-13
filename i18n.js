@@ -2,9 +2,13 @@
 let currentLang = 'nl';
 let translations = {};
 
-// Helper functions
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+// Helper functions - only declare if not already defined
+if (typeof window.$ === 'undefined') {
+  window.$ = (sel, root = document) => root.querySelector(sel);
+  window.$$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+}
+const $ = window.$;
+const $$ = window.$$;
 
 // Load translations from JSON file
 async function loadTranslations(lang) {
