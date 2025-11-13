@@ -84,12 +84,11 @@ window.addEventListener('DOMContentLoaded', () => {
   // Form: geen native submit/validatie nodig; Tally popup handlet de flow
 
   // Activities (support meerdere scopes)
-  let pillEventBound = false;
   function initActivities() {
     const activities = getActivities();
     if (!activities.actief) {
       // Translations not loaded yet, wait
-      return;
+      return false;
     }
     
     $$('.activities-scope').forEach(scope => {
@@ -98,60 +97,76 @@ window.addEventListener('DOMContentLoaded', () => {
       const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
       renderActivities(defaultKey, scope);
     });
-    
-    // Bind events only once
-    if (!pillEventBound) {
-      pillEventBound = true;
-      $$('.pill').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const scope = this.closest('.activities-scope');
-          if (!scope) return;
-          $$('.pill', scope).forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          renderActivities(this.dataset.tab, scope);
-        });
-      });
-    }
+    return true;
   }
+  
+  // Bind pill events (only once, using event delegation)
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('pill') && e.target.dataset.tab) {
+      const scope = e.target.closest('.activities-scope');
+      if (!scope) return;
+      $$('.pill', scope).forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      renderActivities(e.target.dataset.tab, scope);
+    }
+  });
   
   // Initialize activities after translations are loaded
   window.addEventListener('languageChanged', () => {
     initActivities();
   });
   
-  // Try to initialize after a short delay to ensure translations are loaded
-  setTimeout(initActivities, 200);
+  // Try to initialize - wait for translations
+  function tryInitActivities() {
+    if (!initActivities()) {
+      // If translations not ready, try again
+      setTimeout(tryInitActivities, 200);
+    }
+  }
+  
+  // Start trying after a short delay
+  setTimeout(tryInitActivities, 300);
 
-  // FAQ
-  $$('.faq-item').forEach(item => {
-    const btn = $('.faq-btn', item);
-    btn.addEventListener('click', () => item.classList.toggle('open'));
+  // FAQ - use event delegation to handle translated content
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('faq-btn') || e.target.closest('.faq-btn')) {
+      const btn = e.target.classList.contains('faq-btn') ? e.target : e.target.closest('.faq-btn');
+      const item = btn.closest('.faq-item');
+      if (item) {
+        item.classList.toggle('open');
+      }
+    }
   });
 
-  // Mobile menu toggle
-  const mobileToggle = $('.mobile-menu-toggle');
-  const mobileNav = $('.mobile-nav');
-  if(mobileToggle && mobileNav) {
-    mobileToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      const icon = $('i', mobileToggle);
-      if(icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
+  // Mobile menu toggle - use event delegation
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('mobile-menu-toggle') || e.target.closest('.mobile-menu-toggle')) {
+      const toggle = e.target.classList.contains('mobile-menu-toggle') ? e.target : e.target.closest('.mobile-menu-toggle');
+      const mobileNav = $('.mobile-nav');
+      if (mobileNav) {
+        mobileNav.classList.toggle('open');
+        const icon = $('i', toggle);
+        if(icon) {
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        }
       }
-    });
-    // Close menu when clicking a link
-    $$('.mobile-nav a').forEach(link => {
-      link.addEventListener('click', () => {
+    }
+    
+    // Close menu when clicking a mobile nav link
+    if (e.target.closest('.mobile-nav a') && !e.target.closest('.lang-switcher')) {
+      const mobileNav = $('.mobile-nav');
+      const mobileToggle = $('.mobile-menu-toggle');
+      if(mobileNav && mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
         const icon = $('i', mobileToggle);
         if(icon) {
           icon.classList.remove('fa-times');
           icon.classList.add('fa-bars');
         }
-      });
-    });
-  }
+      }
+    }
+  });
 
   // Sticky CTA: geen custom click, Tally data-attributen openen popup
   // Sticky close verwijderd

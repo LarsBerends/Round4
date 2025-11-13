@@ -188,28 +188,30 @@ window.i18n = {
   translate
 };
 
-// Language switcher event handlers
+// Language switcher event handlers - use event delegation
 function setupLanguageSwitcher() {
-  $$('.lang-switcher-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.lang;
-      if (lang === 'nl' || lang === 'en') {
-        setLanguage(lang);
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('lang-switcher-btn') || e.target.closest('.lang-switcher-btn')) {
+      const btn = e.target.classList.contains('lang-switcher-btn') ? e.target : e.target.closest('.lang-switcher-btn');
+      if (btn && btn.dataset.lang) {
+        const lang = btn.dataset.lang;
+        if (lang === 'nl' || lang === 'en') {
+          setLanguage(lang);
+        }
       }
-    });
+    }
   });
 }
+
+// Setup language switcher immediately (uses event delegation, so safe to call early)
+setupLanguageSwitcher();
 
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    initI18n().then(() => {
-      setupLanguageSwitcher();
-    });
+    initI18n();
   });
 } else {
-  initI18n().then(() => {
-    setupLanguageSwitcher();
-  });
+  initI18n();
 }
 
