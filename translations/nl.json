@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Ondernemers via Sport – V3 (HTML/CSS/JS)"
+  },
+  "nav": {
+    "how": "Hoe het werkt",
+    "benefits": "Voordelen",
+    "activities": "Activiteiten",
+    "pricing": "Prijs",
+    "faq": "FAQ",
+    "join": "Join Round4"
+  },
+  "hero": {
+    "title": "Ontmoet elke maand",
+    "titleHighlight": "3 ondernemers",
+    "titleSuffix": "via een sportieve activiteit",
+    "description": "Round4 koppelt elke maand vier lokale ondernemers aan elkaar voor een sportieve activiteit. Geen formele borrels, maar échte ontmoetingen, met inhoud én plezier.",
+    "ctaPrimary": "Inschrijven op de wachtlijst",
+    "ctaSecondary": "Hoe werkt het",
+    "note": "*We starten binnenkort in Utrecht"
+  },
+  "how": {
+    "kicker": "Hoe het werkt",
+    "title": "Iedere maand.",
+    "titleHighlight": "vier ondernemers.",
+    "titleSuffix": "één activiteit.",
+    "step1": {
+      "title": "1. Automatische match",
+      "description": "We koppelen je elke maand aan drie ondernemers uit jouw omgeving. Lokaal en laagdrempelig."
+    },
+    "step2": {
+      "title": "2. Plan jullie activiteit",
+      "description": "Jullie prikken samen een sportieve activiteit. Wandelen, boksen, padel, het maakt niet uit."
+    },
+    "step3": {
+      "title": "3. Deel ervaringen",
+      "description": "Na het sporten: koffie, biertje, pizza en échte gesprekken. Ondernemers die elkaar vooruit helpen."
+    },
+    "step4": {
+      "title": "4. Volgende ronde",
+      "description": "Aan het eind van de maand verdwijnt de groepschat en begint het weer van voor af aan."
+    },
+    "tagline": "Samen actief, samen groeien — dat is Round4",
+    "cta": "Join Round4"
+  },
+  "benefits": {
+    "kicker": "Waarom dit werkt",
+    "title": "Sport",
+    "titleHighlight": "breekt",
+    "titleSuffix": "het ijs en de bullshit",
+    "bullet1": "In kleine groepen ontstaat vanzelf diepgang.",
+    "bullet2": "Geen pitch of oppervlakkige praatjes.",
+    "bullet3": "Een sportieve activiteit en een goed gesprek",
+    "bullet4": "Je hoeft je niet te bewijzen. Je hoeft niks te verkopen.",
+    "bullet5": "Voor ondernemers die groeien door te delen."
+  },
+  "voorWie": {
+    "kicker": "Voor wie is Round4",
+    "title": "Voor ondernemers",
+    "titleHighlight": "met energie",
+    "paragraph1": "Niet voor mensen met visitekaartjes, maar voor ondernemers, founders, freelancers, bouwers en creatievelingen — tussen de 25 en 40 jaar — die scherp willen blijven en niet bang zijn voor een beetje zweet en een goed gesprek.",
+    "paragraph2": "Voor ondernemers die niet willen netwerken voor de vorm, maar om elkaar echt te leren kennen. Je hoeft bij Round4 niks te pitchen. Je hoeft je niet te bewijzen. Je komt gewoon zoals je bent. Met je ideeën, twijfels, uitdagingen en successen.",
+    "paragraph3": "Ben jij bereidheid om even offline te gaan, zodat je ruimte maakt voor échte gesprekken?"
+  },
+  "activities": {
+    "kicker": "Activiteiten",
+    "title": "Kies wat bij jullie past",
+    "subtitle": "Inspiratie voor plannen van jullie meet‑up",
+    "tabs": {
+      "actief": "Actief & energiek",
+      "licht": "Licht & toegankelijk",
+      "sociaal": "Sociaal + fun"
+    },
+    "actief": {
+      "desc": "Voor de groepsbinding en de dopamine.",
+      "image": "images/Tennis.webp",
+      "imageAlt": "Actief & energiek",
+      "items": [
+        "Padel",
+        "Boulderen",
+        "Wielrennen",
+        "Boksen",
+        "Tennis",
+        "Bootcamp",
+        "Zaalvoetbal",
+        "Basketbal",
+        "Trailrun",
+        "HIIT-training",
+        "Beachvolleybal",
+        "Klimmen",
+        "Spinning",
+        "Kickboksen",
+        "Roeien",
+        "Squash",
+        "Hindernisbaan",
+        "Ski/Snowboarden",
+        "Rolschaatsen",
+        "Mountainbiken"
+      ]
+    },
+    "licht": {
+      "desc": "Ideaal voor kennismaken en een goed gesprek.",
+      "image": "images/Shuffleboard.webp",
+      "imageAlt": "Licht & toegankelijk",
+      "items": [
+        "City walk",
+        "Yoga",
+        "Suppen",
+        "Poolen",
+        "Discgolf",
+        "Sjoelen",
+        "Pitch & Putt",
+        "Boswandeling",
+        "Golf",
+        "Jeu de boules",
+        "Shuffleboard",
+        "Biljart",
+        "Curling (indoor)",
+        "Picknick"
+      ]
+    },
+    "sociaal": {
+      "desc": "Niet de sportprestaties, maar een spelelement.",
+      "image": "images/darts.webp",
+      "imageAlt": "Sociaal & fun",
+      "items": [
+        "Bowlen",
+        "Mini-golf",
+        "Lasergamen",
+        "Darten",
+        "Arcadehal",
+        "Bordspellen",
+        "Pubquiz",
+        "Paintball",
+        "VR-games",
+        "Escaperoom",
+        "Karten",
+        "Tafeltennis",
+        "Spelletjescafé"
+      ]
+    }
+  },
+  "pricing": {
+    "kicker": "Prijs",
+    "title": "Simpel en transparant",
+    "subtitle": "Maandelijks lidmaatschap – opzeggen kan altijd",
+    "membership": "Lidmaatschap",
+    "price": "€9,95",
+    "perMonth": "/ maand",
+    "badge": "Maandelijks opzegbaar",
+    "feature1": "Elke maand match met 3 ondernemers",
+    "feature2": "Activiteit‑inspiratie en chatgroep",
+    "feature3": "Wees onderdeel van een nieuwe netwerkrevolutie",
+    "cta": "Join Round4",
+    "note": "Kosten voor activiteiten zijn voor eigen rekening en keuze."
+  },
+  "testfase": {
+    "kicker": "Testfase",
+    "title": "Round4 begint in Utrecht",
+    "paragraph1": "We starten met een pilot in Utrecht. De eerste 50 ondernemers worden ingedeeld in groepjes van vier. Als je erbij bent, bouw je vanaf dag één mee. Geen afwachtende houding. Geen kijkers. Alleen doeners.",
+    "paragraph2": "Ben jij er klaar voor?",
+    "cta": "Join Round4"
+  },
+  "roadmap": {
+    "kicker": "Roadmap",
+    "title": "Meer waarde naarmate de community groeit",
+    "subtitle": "Specifieke matching zodra jouw stad 250+ leden heeft",
+    "phase1": "Fase 1: Lokaal matchen op beschikbaarheid & sport.",
+    "phase2": "Fase 2: Specifieker matchen op branche, omzetniveau en groeifase."
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "title": "Veelgestelde vragen",
+    "q1": {
+      "question": "Hoe plannen we de activiteit?",
+      "answer": "Jullie kiezen zelf plek en tijd. We geven inspiratielijstjes en handige checklists."
+    },
+    "q2": {
+      "question": "Wat als ik verhinderd ben?",
+      "answer": "Je kunt ruilen of een maand overslaan – je lidmaatschap blijft doorlopen."
+    },
+    "q3": {
+      "question": "Kan ik minder vaak meedoen?",
+      "answer": "Ja, maandelijks, om de maand of per kwartaal. Jij bepaalt het ritme."
+    },
+    "q4": {
+      "question": "Wie betaalt de activiteit?",
+      "answer": "Jullie zelf, passend bij voorkeur en budget. Gratis opties kan ook (wandeling, city walk)."
+    },
+    "q5": {
+      "question": "Hoe zit het met privacy?",
+      "answer": "We gebruiken je gegevens alleen voor matching. We delen niets met derden."
+    }
+  },
+  "footer": {
+    "copyright": "Community voor ondernemers via sport",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Voorwaarden"
+  },
+  "sticky": {
+    "cta": "Join Round4"
+  },
+  "sports": [
+    "Bowlen",
+    "Padel",
+    "Poolen",
+    "Darten",
+    "Tennis",
+    "Mini‑golf",
+    "City walk",
+    "Jeu de boules",
+    "Yoga",
+    "Boulderen",
+    "Pitch & putt",
+    "Bordspellen",
+    "Karting",
+    "Beachvolley",
+    "Suppen",
+    "Boksen",
+    "Bootcamp",
+    "Trailrun",
+    "Tafeltennis",
+    "Shuffleboard",
+    "Sjoelen",
+    "Zaalvoetbal"
+  ]
+}
+

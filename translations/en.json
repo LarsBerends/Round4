@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "title": "Entrepreneurs through Sports – V3 (HTML/CSS/JS)"
+  },
+  "nav": {
+    "how": "How it works",
+    "benefits": "Benefits",
+    "activities": "Activities",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "join": "Join Round4"
+  },
+  "hero": {
+    "title": "Meet every month",
+    "titleHighlight": "3 entrepreneurs",
+    "titleSuffix": "through a sports activity",
+    "description": "Round4 connects four local entrepreneurs every month for a sports activity. No formal networking events, but real connections, with substance and fun.",
+    "ctaPrimary": "Join the waitlist",
+    "ctaSecondary": "How it works",
+    "note": "*We're starting soon in Utrecht"
+  },
+  "how": {
+    "kicker": "How it works",
+    "title": "Every month.",
+    "titleHighlight": "four entrepreneurs.",
+    "titleSuffix": "one activity.",
+    "step1": {
+      "title": "1. Automatic match",
+      "description": "We connect you every month with three entrepreneurs from your area. Local and accessible."
+    },
+    "step2": {
+      "title": "2. Plan your activity",
+      "description": "You schedule a sports activity together. Walking, boxing, padel, it doesn't matter."
+    },
+    "step3": {
+      "title": "3. Share experiences",
+      "description": "After sports: coffee, beer, pizza and real conversations. Entrepreneurs who help each other grow."
+    },
+    "step4": {
+      "title": "4. Next round",
+      "description": "At the end of the month, the group chat disappears and it starts all over again."
+    },
+    "tagline": "Active together, grow together — that's Round4",
+    "cta": "Join Round4"
+  },
+  "benefits": {
+    "kicker": "Why this works",
+    "title": "Sports",
+    "titleHighlight": "breaks",
+    "titleSuffix": "the ice and the bullshit",
+    "bullet1": "Small groups naturally create depth.",
+    "bullet2": "No pitches or superficial talk.",
+    "bullet3": "A sports activity and a good conversation",
+    "bullet4": "You don't have to prove yourself. You don't have to sell anything.",
+    "bullet5": "For entrepreneurs who grow by sharing."
+  },
+  "voorWie": {
+    "kicker": "Who is Round4 for",
+    "title": "For entrepreneurs",
+    "titleHighlight": "with energy",
+    "paragraph1": "Not for people with business cards, but for entrepreneurs, founders, freelancers, builders and creatives — between 25 and 40 years old — who want to stay sharp and aren't afraid of a bit of sweat and a good conversation.",
+    "paragraph2": "For entrepreneurs who don't want to network for the sake of it, but to really get to know each other. You don't have to pitch at Round4. You don't have to prove yourself. You just come as you are. With your ideas, doubts, challenges and successes.",
+    "paragraph3": "Are you willing to go offline for a while, so you make room for real conversations?"
+  },
+  "activities": {
+    "kicker": "Activities",
+    "title": "Choose what suits you",
+    "subtitle": "Inspiration for planning your meet-up",
+    "tabs": {
+      "actief": "Active & energetic",
+      "licht": "Light & accessible",
+      "sociaal": "Social & fun"
+    },
+    "actief": {
+      "desc": "For group bonding and dopamine.",
+      "image": "images/Tennis.webp",
+      "imageAlt": "Active & energetic",
+      "items": [
+        "Padel",
+        "Bouldering",
+        "Cycling",
+        "Boxing",
+        "Tennis",
+        "Bootcamp",
+        "Indoor football",
+        "Basketball",
+        "Trail running",
+        "HIIT training",
+        "Beach volleyball",
+        "Climbing",
+        "Spinning",
+        "Kickboxing",
+        "Rowing",
+        "Squash",
+        "Obstacle course",
+        "Skiing/Snowboarding",
+        "Roller skating",
+        "Mountain biking"
+      ]
+    },
+    "licht": {
+      "desc": "Ideal for getting to know each other and a good conversation.",
+      "image": "images/Shuffleboard.webp",
+      "imageAlt": "Light & accessible",
+      "items": [
+        "City walk",
+        "Yoga",
+        "Stand-up paddling",
+        "Pool",
+        "Disc golf",
+        "Shuffleboard",
+        "Pitch & Putt",
+        "Forest walk",
+        "Golf",
+        "Boules",
+        "Shuffleboard",
+        "Billiards",
+        "Curling (indoor)",
+        "Picnic"
+      ]
+    },
+    "sociaal": {
+      "desc": "Not the sports performance, but a game element.",
+      "image": "images/darts.webp",
+      "imageAlt": "Social & fun",
+      "items": [
+        "Bowling",
+        "Mini-golf",
+        "Laser tag",
+        "Darts",
+        "Arcade",
+        "Board games",
+        "Pub quiz",
+        "Paintball",
+        "VR games",
+        "Escape room",
+        "Go-karting",
+        "Table tennis",
+        "Game café"
+      ]
+    }
+  },
+  "pricing": {
+    "kicker": "Pricing",
+    "title": "Simple and transparent",
+    "subtitle": "Monthly membership – cancel anytime",
+    "membership": "Membership",
+    "price": "€9.95",
+    "perMonth": "/ month",
+    "badge": "Cancel monthly",
+    "feature1": "Match with 3 entrepreneurs every month",
+    "feature2": "Activity inspiration and chat group",
+    "feature3": "Be part of a new networking revolution",
+    "cta": "Join Round4",
+    "note": "Activity costs are at your own expense and choice."
+  },
+  "testfase": {
+    "kicker": "Pilot phase",
+    "title": "Round4 starts in Utrecht",
+    "paragraph1": "We're starting with a pilot in Utrecht. The first 50 entrepreneurs will be divided into groups of four. If you're in, you'll build from day one. No waiting attitude. No spectators. Only doers.",
+    "paragraph2": "Are you ready?",
+    "cta": "Join Round4"
+  },
+  "roadmap": {
+    "kicker": "Roadmap",
+    "title": "More value as the community grows",
+    "subtitle": "Specific matching once your city has 250+ members",
+    "phase1": "Phase 1: Local matching on availability & sport.",
+    "phase2": "Phase 2: More specific matching on industry, revenue level and growth stage."
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "title": "Frequently asked questions",
+    "q1": {
+      "question": "How do we plan the activity?",
+      "answer": "You choose the place and time yourselves. We provide inspiration lists and handy checklists."
+    },
+    "q2": {
+      "question": "What if I'm unavailable?",
+      "answer": "You can swap or skip a month – your membership continues."
+    },
+    "q3": {
+      "question": "Can I participate less often?",
+      "answer": "Yes, monthly, every other month or quarterly. You decide the rhythm."
+    },
+    "q4": {
+      "question": "Who pays for the activity?",
+      "answer": "You yourselves, fitting your preference and budget. Free options are also possible (walking, city walk)."
+    },
+    "q5": {
+      "question": "What about privacy?",
+      "answer": "We only use your data for matching. We don't share anything with third parties."
+    }
+  },
+  "footer": {
+    "copyright": "Community for entrepreneurs through sports",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "sticky": {
+    "cta": "Join Round4"
+  },
+  "sports": [
+    "Bowling",
+    "Padel",
+    "Pool",
+    "Darts",
+    "Tennis",
+    "Mini‑golf",
+    "City walk",
+    "Boules",
+    "Yoga",
+    "Bouldering",
+    "Pitch & putt",
+    "Board games",
+    "Go-karting",
+    "Beach volleyball",
+    "Stand-up paddling",
+    "Boxing",
+    "Bootcamp",
+    "Trail running",
+    "Table tennis",
+    "Shuffleboard",
+    "Shuffleboard",
+    "Indoor football"
+  ]
+}
+

@@ -2,32 +2,13 @@
 const STEDEN = ["Amsterdam","Rotterdam","Utrecht","Den Haag","Eindhoven","Groningen","Nijmegen","Haarlem","Tilburg","Breda","Leiden","Zwolle","Arnhem","’s-Hertogenbosch","Amersfoort","Enschede","Delft","Maastricht","Leeuwarden","Almere","Apeldoorn"];
 const DAGEN = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","Zondag"];
 const SPORTS = ["Padel","Tennis","Boulderen","Klimmen","Wandelen","Bootcamp","Boksen","Yoga","Suppen","Kanoën","Bowlen","Lasergame"];
-const ACTIVITEITEN = {
-  actief: {
-    desc: "Voor de groepsbinding en de dopamine.",
-    image: "images/Tennis.webp",
-    imageAlt: "Actief & energiek",
-    items: [
-      "Padel","Boulderen","Wielrennen","Boksen","Tennis","Bootcamp","Zaalvoetbal","Basketbal","Trailrun","HIIT-training","Beachvolleybal","Klimmen","Spinning","Kickboksen","Roeien","Squash","Hindernisbaan","Ski/Snowboarden","Rolschaatsen","Mountainbiken"
-    ]
-  },
-  licht: {
-    desc: "Ideaal voor kennismaken en een goed gesprek.",
-    image: "images/Shuffleboard.webp",
-    imageAlt: "Licht & toegankelijk",
-    items: [
-      "City walk","Yoga","Suppen","Poolen","Discgolf","Sjoelen","Pitch & Putt","Boswandeling","Golf","Jeu de boules","Shuffleboard","Biljart","Curling (indoor)","Picknick"
-    ]
-  },
-  sociaal: {
-    desc: "Niet de sportprestaties, maar een spelelement.",
-    image: "images/darts.webp",
-    imageAlt: "Sociaal & fun",
-    items: [
-      "Bowlen","Mini-golf","Lasergamen","Darten","Arcadehal","Bordspellen","Pubquiz","Paintball","VR-games","Escaperoom","Karten","Tafeltennis","Spelletjescafé"
-    ]
+// Get activities from translations
+function getActivities() {
+  if (window.i18n && window.i18n.translations()) {
+    return window.i18n.translations().activities || {};
   }
-};
+  return {};
+}
 
 const THEMES = {
   sportief: { primary: '#ffc107', hover:'#e0ac06', from:'#ffc107', to:'#ffecb3', btnText:'#0f172a' }
@@ -54,7 +35,8 @@ function populateSelect(el, arr){
 
 // ===== Activities render =====
 function renderActivities(key, scope){
-  const data = ACTIVITEITEN[key];
+  const activities = getActivities();
+  const data = activities[key];
   if(!data || !scope) return;
   const descEl = $('.activitiesDesc', scope);
   const listEl = $('.activitiesList', scope);
@@ -102,24 +84,74 @@ window.addEventListener('DOMContentLoaded', () => {
   // Form: geen native submit/validatie nodig; Tally popup handlet de flow
 
   // Activities (support meerdere scopes)
-  $$('.activities-scope').forEach(scope => {
-    // Default render
-    const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
-    const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
-    renderActivities(defaultKey, scope);
-    // Bind events per scope
-    $$('.pill', scope).forEach(btn => btn.addEventListener('click', () => {
-      $$('.pill', scope).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderActivities(btn.dataset.tab, scope);
-    }));
+  let pillEventBound = false;
+  function initActivities() {
+    const activities = getActivities();
+    if (!activities.actief) {
+      // Translations not loaded yet, wait
+      return;
+    }
+    
+    $$('.activities-scope').forEach(scope => {
+      // Default render
+      const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
+      const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
+      renderActivities(defaultKey, scope);
+    });
+    
+    // Bind events only once
+    if (!pillEventBound) {
+      pillEventBound = true;
+      $$('.pill').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const scope = this.closest('.activities-scope');
+          if (!scope) return;
+          $$('.pill', scope).forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          renderActivities(this.dataset.tab, scope);
+        });
+      });
+    }
+  }
+  
+  // Initialize activities after translations are loaded
+  window.addEventListener('languageChanged', () => {
+    initActivities();
   });
+  
+  // Try to initialize after a short delay to ensure translations are loaded
+  setTimeout(initActivities, 200);
 
   // FAQ
   $$('.faq-item').forEach(item => {
     const btn = $('.faq-btn', item);
     btn.addEventListener('click', () => item.classList.toggle('open'));
   });
+
+  // Mobile menu toggle
+  const mobileToggle = $('.mobile-menu-toggle');
+  const mobileNav = $('.mobile-nav');
+  if(mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      const icon = $('i', mobileToggle);
+      if(icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
+    });
+    // Close menu when clicking a link
+    $$('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        const icon = $('i', mobileToggle);
+        if(icon) {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    });
+  }
 
   // Sticky CTA: geen custom click, Tally data-attributen openen popup
   // Sticky close verwijderd
