@@ -133,35 +133,35 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Mobile menu toggle - use event delegation
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('mobile-menu-toggle') || e.target.closest('.mobile-menu-toggle')) {
-      const toggle = e.target.classList.contains('mobile-menu-toggle') ? e.target : e.target.closest('.mobile-menu-toggle');
-      const mobileNav = $('.mobile-nav');
-      if (mobileNav) {
-        mobileNav.classList.toggle('open');
-        const icon = $('i', toggle);
-        if(icon) {
-          icon.classList.toggle('fa-bars');
-          icon.classList.toggle('fa-times');
-        }
+  // Mobile menu toggle - bind directly to button
+  const mobileToggle = $('.mobile-menu-toggle');
+  const mobileNav = $('.mobile-nav');
+  if(mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileNav.classList.toggle('open');
+      const icon = $('i', mobileToggle);
+      if(icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
       }
-    }
+    });
     
     // Close menu when clicking a mobile nav link
-    if (e.target.closest('.mobile-nav a') && !e.target.closest('.lang-switcher')) {
-      const mobileNav = $('.mobile-nav');
-      const mobileToggle = $('.mobile-menu-toggle');
-      if(mobileNav && mobileNav.classList.contains('open')) {
-        mobileNav.classList.remove('open');
-        const icon = $('i', mobileToggle);
-        if(icon) {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
+    $$('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (!this.closest('.lang-switcher')) {
+          mobileNav.classList.remove('open');
+          const icon = $('i', mobileToggle);
+          if(icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
         }
-      }
-    }
-  });
+      });
+    });
+  }
 
   // Sticky CTA: geen custom click, Tally data-attributen openen popup
   // Sticky close verwijderd
