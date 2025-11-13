@@ -35,20 +35,23 @@ body {
   border-bottom: 1px solid var(--border);
 }
 body {
-  padding-top: 50px;
+  padding-top: 66px;
 }
 .nav { display: none; gap: 24px; color: var(--muted); }
 .nav a { text-decoration: none; color: inherit; }
 .nav a:hover { opacity: .95; color: #ffffff; }
 .brand { display:flex; align-items:center; gap:12px; }
 .logo { width:36px; height:36px; border-radius:12px; display:grid; place-items:center; color:#fff; font-weight:700; background: var(--primary); }
-.header-row { display:flex; align-items:center; justify-content:space-between; padding:2px 0; gap:12px; }
+.header-row { display:flex; align-items:center; justify-content:space-between; padding:8px 0; gap:12px; }
 .header-row .brand { flex-shrink:0; }
 .header-row .nav { flex:1; }
 .header-row .lang-switcher { flex-shrink:0; }
 .header-row .mobile-menu-toggle { flex-shrink:0; }
 .header-row .header-cta { flex-shrink:0; }
 .header-cta { display:none; gap:8px; }
+.header-cta .btn-primary {
+  padding: 10px 16px;
+}
 .mobile-menu-toggle { display:none; }
 .mobile-nav { 
   display:none; 

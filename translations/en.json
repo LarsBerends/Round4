@@ -1,6 +1,8 @@
 {
   "meta": {
-    "title": "Entrepreneurs through Sports – V3 (HTML/CSS/JS)"
+    "title": "Round4 - Meet entrepreneurs through sports activities",
+    "description": "Round4 connects four local entrepreneurs every month for a sports activity. No formal networking events, but real connections with substance and fun.",
+    "keywords": "entrepreneur networking, sports networking, entrepreneur community, local entrepreneurs, sports activities"
   },
   "nav": {
     "how": "How it works",
@@ -93,7 +95,7 @@
         "Rowing",
         "Squash",
         "Obstacle course",
-        "Skiing/Snowboarding",
+        "Skiing/ Snowboarding",
         "Roller skating",
         "Mountain biking"
       ]

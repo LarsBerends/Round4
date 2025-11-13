@@ -71,13 +71,16 @@ async function setLanguage(lang) {
   // Update HTML lang attribute
   document.documentElement.lang = lang;
   
+  // Always load translations for the new language (in case switching from nl to en or vice versa)
+  await loadTranslations(lang);
+
   // Update page title
   if (translations.meta && translations.meta.title) {
     document.title = translations.meta.title;
   }
-
-  // Always load translations for the new language (in case switching from nl to en or vice versa)
-  await loadTranslations(lang);
+  
+  // Update meta tags
+  updateMetaTags();
 
   // Apply translations
   translate();
@@ -141,6 +144,57 @@ function translate() {
       el.alt = value;
     }
   });
+
+  // Translate meta tags with data-i18n-content
+  window.$$('[data-i18n-content]').forEach(el => {
+    const key = el.getAttribute('data-i18n-content');
+    const value = getNestedValue(translations, key);
+    if (value !== undefined) {
+      el.setAttribute('content', value);
+    }
+  });
+}
+
+// Update meta tags separately (called after translations are loaded)
+function updateMetaTags() {
+  if (!translations.meta) return;
+  
+  // Update standard meta tags
+  const metaTitle = window.$('meta[name="title"]');
+  const metaDescription = window.$('meta[name="description"]');
+  const metaKeywords = window.$('meta[name="keywords"]');
+  
+  if (metaTitle && translations.meta.title) {
+    metaTitle.setAttribute('content', translations.meta.title);
+  }
+  if (metaDescription && translations.meta.description) {
+    metaDescription.setAttribute('content', translations.meta.description);
+  }
+  if (metaKeywords && translations.meta.keywords) {
+    metaKeywords.setAttribute('content', translations.meta.keywords);
+  }
+  
+  // Update Open Graph tags
+  const ogTitle = window.$('meta[property="og:title"]');
+  const ogDescription = window.$('meta[property="og:description"]');
+  
+  if (ogTitle && translations.meta.title) {
+    ogTitle.setAttribute('content', translations.meta.title);
+  }
+  if (ogDescription && translations.meta.description) {
+    ogDescription.setAttribute('content', translations.meta.description);
+  }
+  
+  // Update Twitter tags
+  const twitterTitle = window.$('meta[property="twitter:title"]');
+  const twitterDescription = window.$('meta[property="twitter:description"]');
+  
+  if (twitterTitle && translations.meta.title) {
+    twitterTitle.setAttribute('content', translations.meta.title);
+  }
+  if (twitterDescription && translations.meta.description) {
+    twitterDescription.setAttribute('content', translations.meta.description);
+  }
 }
 
 // Get nested value from object using dot notation

@@ -1,6 +1,8 @@
 {
   "meta": {
-    "title": "Ondernemers via Sport – V3 (HTML/CSS/JS)"
+    "title": "Round4 - Ontmoet ondernemers via sportieve activiteiten",
+    "description": "Round4 koppelt elke maand vier lokale ondernemers aan elkaar voor een sportieve activiteit. Geen formele borrels, maar échte ontmoetingen met inhoud én plezier.",
+    "keywords": "ondernemers netwerken, sportief netwerken, ondernemers community, lokale ondernemers, sport activiteiten"
   },
   "nav": {
     "how": "Hoe het werkt",
@@ -93,7 +95,7 @@
         "Roeien",
         "Squash",
         "Hindernisbaan",
-        "Ski/Snowboarden",
+        "Ski/ Snowboarden",
         "Rolschaatsen",
         "Mountainbiken"
       ]

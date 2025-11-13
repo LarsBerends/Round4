@@ -115,6 +115,35 @@ function renderActivities(key, scope){
 // ===== Modal verwijderd (Tally handelt popups af) =====
 
 // ===== Init =====
+// Smooth scrolling with offset for fixed header
+function smoothScrollTo(target) {
+  const element = document.querySelector(target);
+  if (element) {
+    const headerHeight = 66; // Match body padding-top
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Handle smooth scrolling for anchor links
+document.addEventListener('click', function(e) {
+  // Check if clicked element is an anchor link with hash
+  const link = e.target.closest('a[href^="#"]');
+  if (link && link.getAttribute('href') !== '#' && !link.hasAttribute('data-tally-open')) {
+    const href = link.getAttribute('href');
+    // Only handle internal anchor links (not external or special links)
+    if (href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      smoothScrollTo(href);
+    }
+  }
+});
+
 window.addEventListener('DOMContentLoaded', () => {
   // Theme (enkel sportief)
   setVars('sportief');
