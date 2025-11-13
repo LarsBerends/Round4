@@ -4,8 +4,15 @@ const DAGEN = ["Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag","
 const SPORTS = ["Padel","Tennis","Boulderen","Klimmen","Wandelen","Bootcamp","Boksen","Yoga","Suppen","Kanoën","Bowlen","Lasergame"];
 // Get activities from translations
 function getActivities() {
-  if (window.i18n && window.i18n.translations()) {
-    return window.i18n.translations().activities || {};
+  try {
+    if (window.i18n && window.i18n.translations()) {
+      const trans = window.i18n.translations();
+      if (trans && trans.activities) {
+        return trans.activities;
+      }
+    }
+  } catch (e) {
+    console.error('Error getting activities:', e);
   }
   return {};
 }
@@ -36,28 +43,45 @@ function populateSelect(el, arr){
 // ===== Activities render =====
 function renderActivities(key, scope){
   const activities = getActivities();
+  if (!activities || !activities[key]) {
+    console.warn('Activities data not found for key:', key);
+    return;
+  }
   const data = activities[key];
   if(!data || !scope) return;
   const descEl = $('.activitiesDesc', scope);
   const listEl = $('.activitiesList', scope);
-  if(!descEl || !listEl) return;
+  if(!descEl || !listEl) {
+    console.warn('Activities elements not found:', { descEl, listEl, scope });
+    return;
+  }
   const contentWrap = scope.closest('.benefits-content');
   const imageEl = contentWrap ? $('.activities-image', contentWrap) : null;
-  descEl.textContent = data.desc;
-  listEl.innerHTML = '';
-  const columns = [];
-  for(let i = 0; i < data.items.length; i += 7){
-    columns.push(data.items.slice(i, i + 7));
+  
+  // Set description
+  if (data.desc) {
+    descEl.textContent = data.desc;
   }
-  columns.forEach(colItems => {
-    const col = document.createElement('ul');
-    colItems.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      col.appendChild(li);
+  
+  // Clear and rebuild list
+  listEl.innerHTML = '';
+  if (data.items && data.items.length > 0) {
+    const columns = [];
+    for(let i = 0; i < data.items.length; i += 7){
+      columns.push(data.items.slice(i, i + 7));
+    }
+    columns.forEach(colItems => {
+      const col = document.createElement('ul');
+      colItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        col.appendChild(li);
+      });
+      listEl.appendChild(col);
     });
-    listEl.appendChild(col);
-  });
+  }
+  
+  // Update image
   if(imageEl && data.image){
     imageEl.src = data.image;
     imageEl.alt = data.imageAlt || data.desc;
@@ -84,43 +108,44 @@ window.addEventListener('DOMContentLoaded', () => {
   // Form: geen native submit/validatie nodig; Tally popup handlet de flow
 
   // Activities (support meerdere scopes) - like original but with translations
-  $$('.activities-scope').forEach(scope => {
-    // Bind events per scope (like original)
-    $$('.pill', scope).forEach(btn => {
-      btn.addEventListener('click', function() {
-        $$('.pill', scope).forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const activities = getActivities();
-        if (activities[this.dataset.tab]) {
-          renderActivities(this.dataset.tab, scope);
-        }
-      });
-    });
-    
-    // Initial render - wait for translations
-    function renderInitial() {
-      const activities = getActivities();
-      if (activities.actief) {
-        const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
-        const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
-        renderActivities(defaultKey, scope);
-      } else {
-        setTimeout(renderInitial, 200);
-      }
+  function initActivities() {
+    const activities = getActivities();
+    if (!activities || !activities.actief) {
+      return false; // Translations not loaded yet, wait
     }
-    setTimeout(renderInitial, 100);
+    
+    $$('.activities-scope').forEach(scope => {
+      const defaultBtn = $('.pill.active', scope) || $('.pill', scope);
+      const defaultKey = defaultBtn ? defaultBtn.dataset.tab : 'actief';
+      renderActivities(defaultKey, scope);
+    });
+    return true;
+  }
+  
+  // Bind events using event delegation (works with dynamically translated content)
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('pill') && e.target.dataset.tab) {
+      const scope = e.target.closest('.activities-scope');
+      if (!scope) return;
+      $$('.pill', scope).forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      renderActivities(e.target.dataset.tab, scope);
+    }
   });
+  
+  // Try to initialize activities - retry until translations are loaded
+  function tryInitActivities() {
+    if (!initActivities()) {
+      setTimeout(tryInitActivities, 200);
+    }
+  }
+  setTimeout(tryInitActivities, 300);
   
   // Re-render activities when language changes
   window.addEventListener('languageChanged', () => {
-    $$('.activities-scope').forEach(scope => {
-      const activeBtn = $('.pill.active', scope) || $('.pill', scope);
-      const activeKey = activeBtn ? activeBtn.dataset.tab : 'actief';
-      const activities = getActivities();
-      if (activities[activeKey]) {
-        renderActivities(activeKey, scope);
-      }
-    });
+    setTimeout(() => {
+      initActivities();
+    }, 100);
   });
 
   // FAQ - bind directly to buttons (works with translations)
